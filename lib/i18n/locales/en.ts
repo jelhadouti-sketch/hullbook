@@ -141,10 +141,10 @@ const en = {
   },
   founder: {
     label: '',
-    quote: '"Every boat owner I know keeps two sets of numbers — what they tell their partner, and what they actually spend. HullBook is for the honest number."',
+    quote: '""',
     sig: 'The HullBook Team',
-    followLink: 'Follow the build',
-    logLink: 'Read the log',
+    followLink: '',
+    logLink: '',
   },
   faq: {
     label: 'Questions',
@@ -165,10 +165,10 @@ const en = {
   final: {
     eyebrow: 'Get started',
     title1: 'Start managing your boat costs today.',
-    title2: 'Be ready.',
+    title2: '',
     lede: 'Join HullBook today and get a clear picture of your total boat ownership cost.',
     ctaButton: 'Start free trial',
-    note: 'No spam. One email when we launch. Unsubscribe anytime.',
+    note: 'No credit card required. Cancel anytime.',
   },
   footer: {
     tagline: 'Professional boat cost management',
