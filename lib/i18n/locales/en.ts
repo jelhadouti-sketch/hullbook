@@ -18,7 +18,7 @@ const en = {
     earlyAccess: 'Start free trial',
   },
   hero: {
-    eyebrow: 'For boat owners · Launching 2026',
+    eyebrow: 'Boat ownership · Simplified',
     title1: 'Know what your boat',
     title2: 'really',
     title3: 'costs.',
@@ -164,10 +164,10 @@ const en = {
   },
   final: {
     eyebrow: 'Get started',
-    title1: 'The next season starts soon.',
+    title1: 'Start managing your boat costs today.',
     title2: 'Be ready.',
     lede: 'Join HullBook today and get a clear picture of your total boat ownership cost.',
-    ctaButton: 'Reserve my spot',
+    ctaButton: 'Start free trial',
     note: 'No spam. One email when we launch. Unsubscribe anytime.',
   },
   footer: {
@@ -195,7 +195,7 @@ const en = {
     loginTitle: 'Welcome back',
     loginSubtitle: 'Sign in to your HullBook.',
     signupTitle: 'Start your logbook',
-    signupSubtitle: 'Free during beta. No credit card.',
+    signupSubtitle: '14-day free trial. No credit card required.',
     email: 'Email',
     password: 'Password',
     fullName: 'Your name',
