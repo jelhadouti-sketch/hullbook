@@ -51,7 +51,7 @@ export default async function HomePage({
             <a href="#faq" className="hover:text-ink transition">{dict.nav.faq}</a>
           </div>
           <div className="flex items-center gap-3">
-            <LanguageSwitcher currentLocale={locale} />
+            <LanguageSwitcher current={locale} />
             <a href="#pricing" className="inline-flex items-center gap-2 bg-ink text-paper-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink-deep transition shadow-sm">
               {dict.nav.signup}
             </a>
