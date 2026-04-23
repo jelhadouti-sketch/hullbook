@@ -26,15 +26,15 @@ const CONFIRM_BODY: Record<Locale, string> = {
   en:
     "Thanks for signing up to HullBook. You'll receive an email when your account is ready. In the meantime, feel free to reach out with any questions. — The HullBook Team",
   es:
-    'Estás en la lista de HullBook. Tu tarifa de capitán fundador está reservada. Te escribiremos solo al lanzar — sin spam. — Jamal',
+    'Gracias por unirte a HullBook. Te enviaremos un email cuando tu cuenta esté lista. — El equipo HullBook',
   de:
-    'Sie stehen auf der HullBook-Warteliste. Ihr Gründerkapitäns-Preis ist gesichert. Wir melden uns nur beim Start — kein Spam dazwischen. — Jamal',
+    'Vielen Dank, dass Sie HullBook beigetreten sind. Wir senden Ihnen eine E-Mail, sobald Ihr Konto bereit ist. — Das HullBook Team',
   fr:
-    'Vous êtes sur la liste HullBook. Votre tarif capitaine fondateur est verrouillé. Un seul email au lancement — pas de spam. — Jamal',
+    'Merci de rejoindre HullBook. Nous vous enverrons un email dès que votre compte sera prêt. — L'équipe HullBook',
   nl:
-    'Je staat op de HullBook-wachtlijst. Je oprichters-kapiteinstarief is gereserveerd. We mailen alleen bij lancering — geen spam. — Jamal',
+    'Bedankt voor uw aanmelding bij HullBook. We sturen u een email zodra uw account klaar is. — Het HullBook Team',
   it:
-    'Sei sulla lista HullBook. La tua tariffa capitano fondatore è bloccata. Ti scriviamo solo al lancio — niente spam. — Jamal',
+    'Grazie per esserti unito a HullBook. Ti invieremo un email quando il tuo account sarà pronto. — Il team HullBook',
 };
 
 export async function POST(request: NextRequest) {
