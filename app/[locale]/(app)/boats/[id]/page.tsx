@@ -142,7 +142,7 @@ export default async function BoatDetailPage({
           <div className="bg-paper-cream border border-black/15 p-5">
             <div className="flex justify-between items-center mb-3">
               <span className="text-sm font-medium text-sea-deep">
-                {dict.demo.chartTitle1}
+                Spending by category
               </span>
               <span className="text-xs text-ink-mute font-mono tracking-wider">
                 {new Date().getFullYear()}
@@ -157,7 +157,7 @@ export default async function BoatDetailPage({
           <div className="bg-paper-cream border border-black/15 p-5">
             <div className="flex justify-between items-center mb-3">
               <span className="text-sm font-medium text-sea-deep">
-                {dict.demo.chartTitle2}
+                Monthly spend
               </span>
             </div>
             <CategoryPieChart
@@ -172,7 +172,7 @@ export default async function BoatDetailPage({
       {/* Entry log */}
       <div className="bg-paper-cream border border-black/15">
         <h2 className="font-serif text-xl font-medium text-sea-deep p-5 border-b border-black/15">
-          {dict.demo.recentEntries}
+          Recent entries
         </h2>
         {allEntries.length === 0 ? (
           <p className="p-10 text-center text-ink-mute">
