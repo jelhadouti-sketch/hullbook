@@ -24,7 +24,7 @@ export default async function ReportPage({
     .select('currency, full_name, email')
     .eq('id', user.id)
     .single();
-  const currency: Currency = isCurrency(profile?.currency) ? profile.currency as Currency : 'USD';
+  const currency: Currency = isCurrency((profile as { currency?: string } | null)?.currency) ? ((profile as { currency: string }).currency as Currency) : 'USD';
 
   const { data: boat } = await supabase
     .from('boats')

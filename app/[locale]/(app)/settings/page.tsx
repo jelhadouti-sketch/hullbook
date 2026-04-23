@@ -25,7 +25,7 @@ export default async function SettingsPage({
     .eq('id', user.id)
     .single();
 
-  const currentCurrency: Currency = isCurrency(profile?.currency) ? profile.currency : 'USD';
+  const currentCurrency: Currency = isCurrency((profile as { currency?: string } | null)?.currency) ? ((profile as { currency: string }).currency as Currency) : 'USD';
   const currentLocale: Locale = isLocale(profile?.locale) ? profile.locale : locale;
 
   return (
