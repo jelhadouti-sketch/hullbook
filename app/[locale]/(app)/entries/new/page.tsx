@@ -28,7 +28,7 @@ export default async function NewEntryPage({
     supabase.from('boats').select('id, name').eq('user_id', user.id).order('name'),
   ]);
 
-  const currency: Currency = isCurrency(profile?.currency) ? profile.currency : 'USD';
+  const currency: Currency = isCurrency(profile?.currency) ? profile.currency as Currency : 'USD';
 
   return (
     <div className="max-w-xl">

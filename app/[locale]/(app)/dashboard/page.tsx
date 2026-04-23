@@ -25,7 +25,7 @@ export default async function DashboardPage({
     .eq('id', user.id)
     .single();
 
-  const currency: Currency = isCurrency(profile?.currency) ? profile.currency : 'USD';
+  const currency: Currency = isCurrency(profile?.currency) ? profile.currency as Currency : 'USD';
 
   const { data: boats } = await supabase.from('boats').select('id, name').eq('user_id', user.id);
   const { data: entries } = await supabase
