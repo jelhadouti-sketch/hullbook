@@ -19,285 +19,359 @@ export default async function HomePage({
 }) {
   const { locale: rawLocale } = await params;
   if (!isLocale(rawLocale)) notFound();
-  const locale: Locale = rawLocale;
+  const locale = rawLocale as Locale;
   const dict = getDictionary(locale);
 
-  // Currency: cookie → browser detection → locale default
+  // Detect currency (used elsewhere; kept for compatibility)
   const cookieStore = await cookies();
   const hdrs = await headers();
   const cookieCurrency = cookieStore.get('hb_currency')?.value;
-  const currency: Currency = isCurrency(cookieCurrency)
-    ? cookieCurrency
-    : detectCurrencyFromAcceptLanguage(hdrs.get('accept-language')) ??
-      defaultCurrencyForLocale(locale);
+  const acceptLanguage = hdrs.get('accept-language');
+  let currency: Currency = defaultCurrencyForLocale(locale);
+  if (cookieCurrency && isCurrency(cookieCurrency)) {
+    currency = cookieCurrency;
+  } else if (acceptLanguage) {
+    const detected = detectCurrencyFromAcceptLanguage(acceptLanguage);
+    if (detected) currency = detected;
+  }
 
   return (
-    <>
-      {/* ================ NAV ================ */}
-      <nav className="sticky top-0 z-50 bg-paper/85 backdrop-blur-md border-b border-black/15">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-10 py-5 flex justify-between items-center">
-          <div className="flex items-center gap-3 font-serif font-medium text-[22px] tracking-tight text-sea">
-            <LogoMark className="w-8 h-8" />
-            HullBook
+    <main className="bg-paper-cream text-ink min-h-screen">
+      {/* ========== NAV ========== */}
+      <nav className="sticky top-0 z-40 bg-paper-cream/95 backdrop-blur border-b border-black/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-6">
+          <a href="#top" className="flex items-center gap-3">
+            <LogoMark className="w-10 h-10" />
+            <span className="text-2xl font-serif text-ink font-semibold">HullBook</span>
+          </a>
+          <div className="hidden md:flex items-center gap-8 text-sm text-ink/70">
+            <a href="#how" className="hover:text-ink transition">{dict.nav.howItWorks}</a>
+            <a href="#features" className="hover:text-ink transition">Features</a>
+            <a href="#pricing" className="hover:text-ink transition">{dict.nav.pricing}</a>
+            <a href="#faq" className="hover:text-ink transition">{dict.nav.faq}</a>
           </div>
-          <div className="flex gap-5 sm:gap-7 items-center text-[15px]">
-            <a href="#demo" className="hidden md:inline text-ink/75 hover:text-ink transition">
-              {dict.nav.demo}
-            </a>
-            <a href="#how" className="hidden md:inline text-ink/75 hover:text-ink transition">
-              {dict.nav.howItWorks}
-            </a>
-            <a href="#pricing" className="hidden md:inline text-ink/75 hover:text-ink transition">
-              {dict.nav.pricing}
-            </a>
-            <LanguageSwitcher current={locale} />
-            <a
-              href="#waitlist"
-              className="px-5 py-2.5 bg-sea text-paper-cream hover:bg-coral transition-colors"
-            >
-              {dict.nav.earlyAccess}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher currentLocale={locale} />
+            <a href="#pricing" className="inline-flex items-center gap-2 bg-ink text-paper-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink-deep transition shadow-sm">
+              {dict.nav.signup}
             </a>
           </div>
         </div>
       </nav>
 
-      {/* ================ HERO ================ */}
-      
+      {/* ========== HERO ========== */}
+      <section id="top" className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-24 md:pt-28 md:pb-32">
+          <div className="grid md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-7">
+              <div className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-coral font-medium mb-8">
+                <span className="w-8 h-px bg-coral" />
+                {dict.hero.eyebrow}
+              </div>
+              <h1 className="font-serif text-5xl md:text-7xl leading-[1.05] text-ink font-normal mb-8">
+                {dict.hero.title1}
+                <br />
+                <em className="text-coral not-italic font-normal">{dict.hero.title2}</em>
+                <br />
+                {dict.hero.title3}
+              </h1>
+              <p className="text-lg md:text-xl text-ink/70 leading-relaxed max-w-xl mb-10">
+                {dict.hero.lede}
+              </p>
+              <div className="max-w-md mb-6">
+                <WaitlistForm
+                  placeholder={dict.hero.emailPlaceholder}
+                  submitLabel={dict.hero.ctaButton}
+                  successMessage={dict.hero.ctaSuccess}
+                />
+              </div>
+              <p className="text-sm text-ink/50">{dict.hero.note}</p>
+            </div>
+            <div className="md:col-span-5">
+              <DashboardMockup dict={dict} />
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* ================ FAQ ================ */}
-      <section className="py-20 md:py-36 border-t border-black/15">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-10">
-          <SectionLabel num="05">{dict.faq.label}</SectionLabel>
-          <h2 className="font-serif font-normal text-[clamp(28px,4vw,42px)] leading-[1.05] tracking-[-0.028em] max-w-[22ch] mb-14 text-sea-deep">
+      {/* ========== STATS ========== */}
+      <section className="bg-ink text-paper-cream py-20 border-y border-black/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-12 text-center md:text-left">
+          <div>
+            <p className="font-serif text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat1Num}</p>
+            <p className="text-paper-cream/70 text-sm leading-relaxed">{dict.stats.stat1Label}</p>
+          </div>
+          <div>
+            <p className="font-serif text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat2Num}</p>
+            <p className="text-paper-cream/70 text-sm leading-relaxed">{dict.stats.stat2Label}</p>
+          </div>
+          <div>
+            <p className="font-serif text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat3Num}</p>
+            <p className="text-paper-cream/70 text-sm leading-relaxed">{dict.stats.stat3Label}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== PROBLEM ========== */}
+      <section id="problem" className="py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">01 · {dict.problem.section}</p>
+          <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16 max-w-3xl">
+            {dict.problem.title}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
+            <div>
+              <p className="text-sm text-ink/40 mb-3 font-mono">i.</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.problem.item1Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.problem.item1Desc}</p>
+            </div>
+            <div>
+              <p className="text-sm text-ink/40 mb-3 font-mono">ii.</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.problem.item2Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.problem.item2Desc}</p>
+            </div>
+            <div>
+              <p className="text-sm text-ink/40 mb-3 font-mono">iii.</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.problem.item3Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.problem.item3Desc}</p>
+            </div>
+            <div>
+              <p className="text-sm text-ink/40 mb-3 font-mono">iv.</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.problem.item4Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.problem.item4Desc}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== HOW ========== */}
+      <section id="how" className="py-24 md:py-32 bg-paper-fog border-y border-black/10">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">02 · {dict.how.section}</p>
+          <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16 max-w-3xl">
+            {dict.how.title}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-10">
+            <div>
+              <p className="font-serif text-5xl text-brass mb-6">{dict.how.step1Num}</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.how.step1Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.how.step1Desc}</p>
+            </div>
+            <div>
+              <p className="font-serif text-5xl text-brass mb-6">{dict.how.step2Num}</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.how.step2Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.how.step2Desc}</p>
+            </div>
+            <div>
+              <p className="font-serif text-5xl text-brass mb-6">{dict.how.step3Num}</p>
+              <h3 className="font-serif text-2xl text-ink mb-3">{dict.how.step3Title}</h3>
+              <p className="text-ink/70 leading-relaxed">{dict.how.step3Desc}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== FEATURES ========== */}
+      <section id="features" className="py-24 md:py-32">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">03 · {dict.features.section}</p>
+          <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16 max-w-3xl">
+            {dict.features.title}
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <FeatureCard title={dict.features.item1Title} desc={dict.features.item1Desc} />
+            <FeatureCard title={dict.features.item2Title} desc={dict.features.item2Desc} />
+            <FeatureCard title={dict.features.item3Title} desc={dict.features.item3Desc} />
+            <FeatureCard title={dict.features.item4Title} desc={dict.features.item4Desc} />
+            <FeatureCard title={dict.features.item5Title} desc={dict.features.item5Desc} />
+            <FeatureCard title={dict.features.item6Title} desc={dict.features.item6Desc} />
+          </div>
+        </div>
+      </section>
+
+      {/* ========== PRICING ========== */}
+      <section id="pricing" className="py-24 md:py-32 bg-paper-fog border-y border-black/10">
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4 text-center">04 · {dict.pricing.section}</p>
+          <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-4 text-center">
+            {dict.pricing.title}
+          </h2>
+          <p className="text-ink/70 text-center mb-16">{dict.pricing.subtitle}</p>
+          <div className="bg-white border border-ink/10 rounded-2xl p-10 md:p-14 shadow-xl">
+            <div className="text-center mb-10">
+              <p className="text-sm uppercase tracking-wider text-coral mb-3">{dict.pricing.planName}</p>
+              <div className="flex items-baseline justify-center gap-2 mb-3">
+                <span className="font-serif text-7xl text-ink">{dict.pricing.planPrice}</span>
+                <span className="text-ink/60 text-xl">{dict.pricing.planPeriod}</span>
+              </div>
+              <p className="text-sm text-ink/50">{dict.pricing.planNote}</p>
+              <p className="text-sm text-coral mt-2 font-medium">{dict.pricing.planAnnual}</p>
+            </div>
+            <ul className="space-y-4 mb-10 max-w-md mx-auto">
+              {[
+                dict.pricing.bullet1,
+                dict.pricing.bullet2,
+                dict.pricing.bullet3,
+                dict.pricing.bullet4,
+                dict.pricing.bullet5,
+                dict.pricing.bullet6,
+                dict.pricing.bullet7,
+                dict.pricing.bullet8,
+              ].map((txt, i) => (
+                <li key={i} className="flex items-start gap-3 text-ink">
+                  <span className="text-coral mt-0.5 font-bold">✓</span>
+                  <span>{txt}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="max-w-md mx-auto">
+              <WaitlistForm
+                placeholder={dict.hero.emailPlaceholder}
+                submitLabel={dict.pricing.ctaButton}
+                successMessage={dict.hero.ctaSuccess}
+              />
+              <p className="text-center text-sm text-ink/50 mt-4">{dict.pricing.trustLine}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== TRUST ========== */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4 text-center">{dict.trust.section}</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-ink leading-tight mb-16 text-center">
+            {dict.trust.title}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-10 text-center">
+            <div>
+              <h3 className="font-serif text-xl text-ink mb-3">{dict.trust.item1Title}</h3>
+              <p className="text-ink/70 text-sm">{dict.trust.item1Desc}</p>
+            </div>
+            <div>
+              <h3 className="font-serif text-xl text-ink mb-3">{dict.trust.item2Title}</h3>
+              <p className="text-ink/70 text-sm">{dict.trust.item2Desc}</p>
+            </div>
+            <div>
+              <h3 className="font-serif text-xl text-ink mb-3">{dict.trust.item3Title}</h3>
+              <p className="text-ink/70 text-sm">{dict.trust.item3Desc}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== FAQ ========== */}
+      <section id="faq" className="py-24 md:py-32 border-t border-black/10">
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">05 · {dict.faq.section}</p>
+          <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16">
             {dict.faq.title}
           </h2>
-          <div>
+          <div className="space-y-6">
             {[
-              ['i.', dict.faq.q1, dict.faq.a1],
-              ['ii.', dict.faq.q2, dict.faq.a2],
-              ['iii.', dict.faq.q3, dict.faq.a3],
-              ['iv.', dict.faq.q4, dict.faq.a4],
-              ['v.', dict.faq.q5, dict.faq.a5],
-              ['vi.', dict.faq.q6, dict.faq.a6],
-            ].map(([marker, q, a], i) => (
-              <div key={i} className="border-t border-black/15 py-8 last:border-b">
-                <div className="font-serif font-medium text-[22px] tracking-tight mb-3.5 leading-tight text-sea-deep">
-                  <span className="italic font-light text-coral mr-4">{marker}</span>
-                  {q}
-                </div>
-                <p className="text-base text-ink-mute max-w-[64ch] leading-relaxed">{a}</p>
+              [dict.faq.q1, dict.faq.a1],
+              [dict.faq.q2, dict.faq.a2],
+              [dict.faq.q3, dict.faq.a3],
+              [dict.faq.q4, dict.faq.a4],
+              [dict.faq.q5, dict.faq.a5],
+              [dict.faq.q6, dict.faq.a6],
+            ].map(([q, a], i) => (
+              <div key={i} className="border-b border-black/10 pb-6">
+                <h3 className="font-serif text-xl text-ink mb-3">{q}</h3>
+                <p className="text-ink/70 leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================ FINAL CTA ================ */}
-      <section id="waitlist" className="py-24 md:py-40 text-center bg-paper-fog border-t border-black/15">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-10">
-          <div className="font-mono text-xs tracking-[0.18em] uppercase text-coral mb-6 flex items-center justify-center gap-3.5 before:content-[''] before:w-6 before:h-px before:bg-coral">
-            {dict.final.eyebrow}
-          </div>
-          <h2 className="font-serif font-normal text-[clamp(36px,5.8vw,64px)] leading-[1.05] tracking-[-0.028em] max-w-[22ch] mx-auto mb-6 text-sea-deep">
-            {dict.final.title1} <em className="italic text-coral">{dict.final.title2}</em>
+      {/* ========== FINAL CTA ========== */}
+      <section className="py-24 md:py-32 bg-ink text-paper-cream">
+        <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
+          <p className="text-xs tracking-[0.2em] uppercase text-brass mb-6">{dict.final.eyebrow}</p>
+          <h2 className="font-serif text-5xl md:text-6xl leading-tight mb-6">
+            {dict.final.title1}{' '}
+            <em className="italic text-brass not-italic">{dict.final.title2}</em>
           </h2>
-          <p className="font-serif font-light text-[clamp(20px,2vw,26px)] leading-[1.4] max-w-[560px] mx-auto mb-12 text-ink-soft">
+          <p className="text-lg md:text-xl text-paper-cream/70 mb-12 max-w-2xl mx-auto">
             {dict.final.lede}
           </p>
-          <WaitlistForm
-            locale={locale}
-            currency={currency}
-            dict={dict}
-            source="final_cta"
-            successMessage={dict.hero.ctaSuccess}
-            buttonLabel={dict.final.ctaButton}
-            center
-            noteNode={
-              <p className="text-sm text-ink-mute max-w-[540px] mx-auto">{dict.final.note}</p>
-            }
-          />
+          <div className="max-w-md mx-auto">
+            <WaitlistForm
+              placeholder={dict.hero.emailPlaceholder}
+              submitLabel={dict.final.ctaButton}
+              successMessage={dict.hero.ctaSuccess}
+            />
+            <p className="text-center text-sm text-paper-cream/50 mt-4">{dict.final.note}</p>
+          </div>
         </div>
       </section>
 
-      {/* ================ FOOTER ================ */}
-      <footer className="max-w-[1280px] mx-auto px-5 sm:px-10 py-12 text-sm text-ink-mute flex justify-between flex-wrap gap-4 border-t border-black/15">
-        <div>© 2026 HullBook · {dict.footer.tagline}</div>
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-ink transition-colors">
-            {dict.footer.privacy}
-          </a>
-          <a href="#" className="hover:text-ink transition-colors">
-            {dict.footer.terms}
-          </a>
-          <a href="mailto:hello@hullbook.com" className="hover:text-ink transition-colors">
-            {dict.footer.contact}
-          </a>
+      {/* ========== FOOTER ========== */}
+      <footer className="bg-ink-deep text-paper-cream/60 py-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-3">
+            <LogoMark className="w-8 h-8" />
+            <span className="text-lg font-serif text-paper-cream">HullBook</span>
+          </div>
+          <p className="text-sm">{dict.footer.copyright}</p>
+          <div className="flex items-center gap-6 text-sm">
+            <a href="#" className="hover:text-paper-cream transition">{dict.footer.privacy}</a>
+            <a href="#" className="hover:text-paper-cream transition">{dict.footer.terms}</a>
+            <a href="mailto:hello@hullbook.com" className="hover:text-paper-cream transition">{dict.footer.contact}</a>
+          </div>
         </div>
       </footer>
-    </>
+    </main>
   );
 }
 
-// ============================================================================
-// Sub-components (server)
-// ============================================================================
-
-function SectionLabel({ num, children }: { num: string; children: React.ReactNode }) {
+// ========== DASHBOARD MOCKUP ==========
+function DashboardMockup({ dict }: { dict: any }) {
   return (
-    <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-ink-mute mb-12 flex items-center gap-3.5">
-      <span className="font-serif italic text-sm text-coral tracking-normal normal-case">
-        {num}
-      </span>
-      {children}
+    <div className="bg-white rounded-2xl shadow-2xl border border-black/5 p-6 md:p-8 relative">
+      {/* window chrome */}
+      <div className="flex items-center gap-2 mb-6 pb-4 border-b border-black/5">
+        <div className="w-3 h-3 rounded-full bg-red-400" />
+        <div className="w-3 h-3 rounded-full bg-yellow-400" />
+        <div className="w-3 h-3 rounded-full bg-green-400" />
+        <span className="text-xs text-ink/40 ml-3">hullbook.com / dashboard</span>
+      </div>
+      {/* content */}
+      <div className="space-y-5">
+        <div>
+          <p className="text-xs uppercase tracking-wider text-ink/50 mb-1">{dict.product.mockupTotalLabel}</p>
+          <p className="font-serif text-5xl text-ink">{dict.product.mockupTotalValue}</p>
+        </div>
+        <div className="grid grid-cols-3 gap-3 pt-4 border-t border-black/5">
+          <div>
+            <p className="text-xs text-ink/50 mb-1">{dict.product.mockupFuelLabel}</p>
+            <p className="text-lg font-medium text-ink">{dict.product.mockupFuelValue}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50 mb-1">{dict.product.mockupMarinaLabel}</p>
+            <p className="text-lg font-medium text-ink">{dict.product.mockupMarinaValue}</p>
+          </div>
+          <div>
+            <p className="text-xs text-ink/50 mb-1">{dict.product.mockupServiceLabel}</p>
+            <p className="text-lg font-medium text-ink">{dict.product.mockupServiceValue}</p>
+          </div>
+        </div>
+        <div className="pt-4 border-t border-black/5 bg-coral/5 -mx-6 -mb-6 md:-mx-8 md:-mb-8 px-6 py-4 md:px-8 rounded-b-2xl">
+          <p className="text-xs uppercase tracking-wider text-coral mb-1 font-medium">{dict.product.mockupNextServiceLabel}</p>
+          <p className="text-sm text-ink">{dict.product.mockupNextServiceValue}</p>
+        </div>
+      </div>
     </div>
   );
 }
 
-function PricingDisplay({
-  locale,
-  currency,
-  dict,
-}: {
-  locale: Locale;
-  currency: Currency;
-  dict: ReturnType<typeof getDictionary>;
-}) {
-  // For the marketing price display we use a locale-appropriate round number.
-  // The real billing price is set per-currency in Stripe at checkout time.
-  const priceMonthly = { USD: 9, EUR: 8, GBP: 7, CAD: 12, AUD: 14, CHF: 8, NOK: 89, SEK: 89, DKK: 69, NZD: 15 }[currency];
-  const formatted = new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(priceMonthly);
+// ========== FEATURE CARD ==========
+function FeatureCard({ title, desc }: { title: string; desc: string }) {
   return (
-    <>
-      <div className="font-serif font-light text-[clamp(80px,14vw,180px)] leading-[0.9] tracking-[-0.05em] my-5 text-sea-deep">
-        {formatted}
-        <em className="italic text-coral">.</em>
-      </div>
-      <div className="font-mono text-sm tracking-[0.25em] uppercase text-ink-mute">
-        {dict.pricing.perMonth}
-      </div>
-    </>
-  );
-}
-
-function FeatureIcon({ kind }: { kind: string }) {
-  const paths: Record<string, React.ReactNode> = {
-    calendar: (
-      <>
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <path d="M3 10h18" />
-        <path d="M8 2v4M16 2v4" />
-      </>
-    ),
-    trending: (
-      <>
-        <path d="M3 3v18h18" />
-        <path d="M7 14l4-4 4 4 5-5" />
-      </>
-    ),
-    file: (
-      <>
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="9" y1="13" x2="15" y2="13" />
-        <line x1="9" y1="17" x2="15" y2="17" />
-      </>
-    ),
-    map: (
-      <>
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-        <circle cx="12" cy="10" r="3" />
-      </>
-    ),
-    clock: (
-      <>
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </>
-    ),
-    export: (
-      <>
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-      </>
-    ),
-  };
-  return (
-    <svg
-      className="w-10 h-10 text-sea"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      {paths[kind]}
-    </svg>
-  );
-}
-
-function HeroIllustration() {
-  return (
-    <div className="relative aspect-square max-w-[480px] mx-auto">
-      <svg
-        viewBox="0 0 400 400"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-full h-full"
-        style={{ animation: 'float 6s ease-in-out infinite' }}
-      >
-        <circle cx="200" cy="200" r="180" fill="#FAF7F1" stroke="#0A1628" strokeWidth="1.5" />
-        <circle cx="290" cy="130" r="28" fill="#B8812E" opacity="0.8" />
-        <path d="M20 230 Q100 225, 200 230 T380 230" stroke="#2C6E8F" strokeWidth="2" fill="none" />
-        <path
-          d="M20 245 Q120 240, 200 248 T380 245"
-          stroke="#2C6E8F"
-          strokeWidth="1.5"
-          fill="none"
-          opacity="0.6"
-        />
-        <path
-          d="M20 260 Q130 255, 200 262 T380 260"
-          stroke="#2C6E8F"
-          strokeWidth="1"
-          fill="none"
-          opacity="0.4"
-        />
-        <g>
-          <line x1="200" y1="110" x2="200" y2="230" stroke="#0A1628" strokeWidth="2.5" />
-          <path d="M200 110 L200 225 L260 225 Z" fill="#F5F1EA" stroke="#0A1628" strokeWidth="2" />
-          <path d="M200 125 L200 225 L155 225 Z" fill="#C14B3A" stroke="#0A1628" strokeWidth="2" />
-          <path
-            d="M140 228 L265 228 L250 252 L155 252 Z"
-            fill="#0E3B5C"
-            stroke="#0A1628"
-            strokeWidth="2"
-          />
-          <line x1="145" y1="240" x2="260" y2="240" stroke="#B8812E" strokeWidth="1.5" />
-          <path d="M200 110 L215 105 L200 115 Z" fill="#C14B3A" />
-        </g>
-        <path
-          d="M130 140 Q135 135, 140 140 M140 140 Q145 135, 150 140"
-          stroke="#0A1628"
-          strokeWidth="1.5"
-          fill="none"
-        />
-        <path
-          d="M250 95 Q253 92, 256 95 M256 95 Q259 92, 262 95"
-          stroke="#0A1628"
-          strokeWidth="1.5"
-          fill="none"
-          opacity="0.7"
-        />
-      </svg>
+    <div className="border border-black/10 rounded-xl p-6 md:p-8 bg-white hover:border-ink/30 hover:shadow-md transition">
+      <h3 className="font-serif text-xl text-ink mb-3">{title}</h3>
+      <p className="text-ink/70 text-sm leading-relaxed">{desc}</p>
     </div>
   );
 }
