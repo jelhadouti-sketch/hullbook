@@ -20,9 +20,9 @@ const fr: TranslationShape = {
     title3: 'coût de votre bateau.',
     lede: 'HullBook enregistre chaque euro, chaque révision, chaque heure moteur. Voyez enfin ce que coûte vraiment votre bateau — pour que les surprises au ponton cessent d\'en être.',
     emailPlaceholder: 'votre@email.com',
-    ctaButton: 'Commencer l'essai gratuit',
+    ctaButton: "Commencer l'essai gratuit",
     ctaSuccess: 'Vous êtes à bord. Tarif capitaine fondateur réservé.',
-    note: 'Essai gratuit de 14 jours. Aucune carte de crédit requise.',
+    note: "Essai gratuit de 14 jours. Aucune carte de crédit requise.",
   },
   stats: {
     stat1Num: '8 400 €',
@@ -138,7 +138,7 @@ const fr: TranslationShape = {
   founder: {
     label: 'Du fondateur',
     quote: '"Chaque propriétaire de bateau que je connais tient deux comptes — celui qu\'il annonce à son conjoint, et celui qu\'il dépense vraiment. HullBook est pour le chiffre honnête."',
-    sig: 'L'équipe HullBook',
+    sig: "L'équipe HullBook",
     followLink: 'Suivre le projet',
     logLink: 'Lire le journal',
   },
@@ -163,7 +163,7 @@ const fr: TranslationShape = {
     title1: 'Commencez à gérer les coûts de votre bateau dès aujourd'hui.',
     title2: 'Soyez prêt.',
     lede: 'Rejoignez la liste d\'attente pour le tarif capitaine fondateur : grosse remise la première année, puis tarif normal à vie. Les 100 premiers seulement.',
-    ctaButton: 'Commencer l'essai gratuit',
+    ctaButton: "Commencer l'essai gratuit",
     note: 'Pas de spam. Un email au lancement. Désabonnement à tout moment.',
   },
   footer: {
@@ -191,7 +191,7 @@ const fr: TranslationShape = {
     loginTitle: 'Bon retour',
     loginSubtitle: 'Connectez-vous à votre HullBook.',
     signupTitle: 'Commencez votre carnet de bord',
-    signupSubtitle: 'Essai gratuit de 14 jours. Aucune carte de crédit requise.',
+    signupSubtitle: "Essai gratuit de 14 jours. Aucune carte de crédit requise.",
     email: 'Email',
     password: 'Mot de passe',
     fullName: 'Votre nom',

@@ -30,7 +30,7 @@ const CONFIRM_BODY: Record<Locale, string> = {
   de:
     'Vielen Dank, dass Sie HullBook beigetreten sind. Wir senden Ihnen eine E-Mail, sobald Ihr Konto bereit ist. — Das HullBook Team',
   fr:
-    'Merci de rejoindre HullBook. Nous vous enverrons un email dès que votre compte sera prêt. — L'équipe HullBook',
+    "Merci de rejoindre HullBook. Nous vous enverrons un email dès que votre compte sera prêt. — L'équipe HullBook",
   nl:
     'Bedankt voor uw aanmelding bij HullBook. We sturen u een email zodra uw account klaar is. — Het HullBook Team',
   it:
