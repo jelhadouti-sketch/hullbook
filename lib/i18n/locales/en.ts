@@ -140,7 +140,7 @@ const en = {
     pf6Desc: 'Real person, real replies, usually within 24 hours.',
   },
   founder: {
-    label: 'From the founder',
+    label: '',
     quote: '"Every boat owner I know keeps two sets of numbers — what they tell their partner, and what they actually spend. HullBook is for the honest number."',
     sig: 'The HullBook Team',
     followLink: 'Follow the build',
