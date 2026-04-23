@@ -52,7 +52,10 @@ export default async function HomePage({
           </div>
           <div className="flex items-center gap-3">
             <LanguageSwitcher current={locale} />
-            <a href="#pricing" className="inline-flex items-center gap-2 bg-ink text-paper-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink-deep transition shadow-sm">
+            <a href={`/${locale}/login`} className="hidden md:inline-flex items-center text-sm text-ink/70 hover:text-ink transition">
+              Log in
+            </a>
+            <a href={`/${locale}/signup`} className="inline-flex items-center gap-2 bg-ink text-paper-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink-deep transition shadow-sm">
               {dict.nav.signup}
             </a>
           </div>
@@ -79,7 +82,9 @@ export default async function HomePage({
                 {dict.hero.lede}
               </p>
               <div className="max-w-md mb-6">
-                <WaitlistForm locale={locale} currency={currency} dict={dict} source="hero" successMessage={dict.hero.ctaSuccess} buttonLabel={dict.hero.ctaButton} />
+                <a href={`/${locale}/signup`} className="inline-flex items-center justify-center gap-2 bg-ink text-paper-cream px-10 py-5 rounded-full text-base font-medium hover:bg-ink-deep transition shadow-lg">
+        {dict.hero.ctaButton} &rarr;
+      </a>
               </div>
               <p className="text-sm text-ink/50">{dict.hero.note}</p>
             </div>
@@ -221,7 +226,9 @@ export default async function HomePage({
               ))}
             </ul>
             <div className="max-w-md mx-auto">
-              <WaitlistForm locale={locale} currency={currency} dict={dict} source="hero" successMessage={dict.hero.ctaSuccess} buttonLabel={dict.hero.ctaButton} />
+              <a href={`/${locale}/signup`} className="inline-flex items-center justify-center gap-2 bg-ink text-paper-cream px-10 py-5 rounded-full text-base font-medium hover:bg-ink-deep transition shadow-lg">
+        {dict.hero.ctaButton} &rarr;
+      </a>
               <p className="text-center text-sm text-ink/50 mt-4">{dict.pricing.trustLine}</p>
             </div>
           </div>
@@ -289,7 +296,9 @@ export default async function HomePage({
             {dict.final.lede}
           </p>
           <div className="max-w-md mx-auto">
-            <WaitlistForm locale={locale} currency={currency} dict={dict} source="hero" successMessage={dict.hero.ctaSuccess} buttonLabel={dict.hero.ctaButton} />
+            <a href={`/${locale}/signup`} className="inline-flex items-center justify-center gap-2 bg-ink text-paper-cream px-10 py-5 rounded-full text-base font-medium hover:bg-ink-deep transition shadow-lg">
+        {dict.hero.ctaButton} &rarr;
+      </a>
             <p className="text-center text-sm text-paper-cream/50 mt-4">{dict.final.note}</p>
           </div>
         </div>
