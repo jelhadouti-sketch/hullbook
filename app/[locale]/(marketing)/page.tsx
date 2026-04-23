@@ -79,11 +79,7 @@ export default async function HomePage({
                 {dict.hero.lede}
               </p>
               <div className="max-w-md mb-6">
-                <WaitlistForm
-                  placeholder={dict.hero.emailPlaceholder}
-                  submitLabel={dict.hero.ctaButton}
-                  successMessage={dict.hero.ctaSuccess}
-                />
+                <WaitlistForm locale={locale} currency={currency} dict={dict} source="hero" successMessage={dict.hero.ctaSuccess} buttonLabel={dict.hero.ctaButton} />
               </div>
               <p className="text-sm text-ink/50">{dict.hero.note}</p>
             </div>
@@ -225,11 +221,7 @@ export default async function HomePage({
               ))}
             </ul>
             <div className="max-w-md mx-auto">
-              <WaitlistForm
-                placeholder={dict.hero.emailPlaceholder}
-                submitLabel={dict.pricing.ctaButton}
-                successMessage={dict.hero.ctaSuccess}
-              />
+              <WaitlistForm locale={locale} currency={currency} dict={dict} source="hero" successMessage={dict.hero.ctaSuccess} buttonLabel={dict.hero.ctaButton} />
               <p className="text-center text-sm text-ink/50 mt-4">{dict.pricing.trustLine}</p>
             </div>
           </div>
@@ -297,11 +289,7 @@ export default async function HomePage({
             {dict.final.lede}
           </p>
           <div className="max-w-md mx-auto">
-            <WaitlistForm
-              placeholder={dict.hero.emailPlaceholder}
-              submitLabel={dict.final.ctaButton}
-              successMessage={dict.hero.ctaSuccess}
-            />
+            <WaitlistForm locale={locale} currency={currency} dict={dict} source="hero" successMessage={dict.hero.ctaSuccess} buttonLabel={dict.hero.ctaButton} />
             <p className="text-center text-sm text-paper-cream/50 mt-4">{dict.final.note}</p>
           </div>
         </div>
