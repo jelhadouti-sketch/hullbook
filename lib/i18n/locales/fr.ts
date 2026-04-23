@@ -160,7 +160,7 @@ const fr: TranslationShape = {
   },
   final: {
     eyebrow: 'Devenez capitaine fondateur',
-    title1: 'Commencez à gérer les coûts de votre bateau dès aujourd'hui.',
+    title1: "Commencez à gérer les coûts de votre bateau dès aujourd'hui.",
     title2: 'Soyez prêt.',
     lede: 'Rejoignez la liste d\'attente pour le tarif capitaine fondateur : grosse remise la première année, puis tarif normal à vie. Les 100 premiers seulement.',
     ctaButton: "Commencer l'essai gratuit",
