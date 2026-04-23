@@ -24,7 +24,7 @@ const CONFIRM_SUBJECT: Record<Locale, string> = {
 
 const CONFIRM_BODY: Record<Locale, string> = {
   en:
-    "You're on the HullBook waitlist. Founding-captain pricing is locked in for you. We'll email you once when we launch — no spam in between. — Jamal",
+    "Thanks for signing up to HullBook. You'll receive an email when your account is ready. In the meantime, feel free to reach out with any questions. — The HullBook Team",
   es:
     'Estás en la lista de HullBook. Tu tarifa de capitán fundador está reservada. Te escribiremos solo al lanzar — sin spam. — Jamal',
   de:

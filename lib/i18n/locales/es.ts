@@ -22,7 +22,7 @@ const es: TranslationShape = {
     emailPlaceholder: 'tu@email.com',
     ctaButton: 'Acceso anticipado',
     ctaSuccess: 'Estás a bordo. Precio de capitán fundador reservado.',
-    note: 'Gratis en beta. Los capitanes fundadores obtienen 50% de descuento de por vida — solo los primeros 100.',
+    note: 'Gratis en beta. Ahorra 20% — solo los primeros 100.',
   },
   stats: {
     stat1Num: '8.400 €',
