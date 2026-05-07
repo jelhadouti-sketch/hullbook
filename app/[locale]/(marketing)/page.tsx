@@ -313,8 +313,8 @@ export default async function HomePage({
           </div>
           <p className="text-sm">{dict.footer.copyright}</p>
           <div className="flex items-center gap-6 text-sm">
-            <a href="#" className="hover:text-paper-cream transition">{dict.footer.privacy}</a>
-            <a href="#" className="hover:text-paper-cream transition">{dict.footer.terms}</a>
+            <a href={`/${locale}/privacy`} className="hover:text-paper-cream transition">{dict.footer.privacy}</a>
+            <a href={`/${locale}/terms`} className="hover:text-paper-cream transition">{dict.footer.terms}</a>
             <a href="mailto:hello@hullbook.com" className="hover:text-paper-cream transition">{dict.footer.contact}</a>
           </div>
         </div>
