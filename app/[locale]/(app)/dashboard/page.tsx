@@ -4,6 +4,8 @@ import { createClient } from '@/lib/supabase/server';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n';
 import { formatCurrency, toMajor, type Currency, isCurrency } from '@/lib/currency';
+import { redirect } from 'next/navigation';
+import { getUserSubscription, hasActiveSubscription } from '@/lib/subscription';
 import {
   Sailboat,
   Receipt,
@@ -29,6 +31,12 @@ export default async function DashboardPage({
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
+
+  // Subscription gate: send to /billing if no active trial or subscription
+  const subscription = await getUserSubscription(user.id);
+  if (!hasActiveSubscription(subscription)) {
+    redirect(`/${locale}/billing`);
+  }
 
   const { data: profile } = await supabase
     .from('profiles')
