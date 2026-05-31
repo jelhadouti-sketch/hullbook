@@ -68,7 +68,7 @@ export default async function HomePage({
                 { href: '#features', label: 'Features' },
                 { href: '#pricing', label: dict.nav.pricing },
                 { href: '#faq', label: dict.nav.faq },
-                { href: \`/\${locale}/blog\`, label: 'Blog' },
+                { href: `/${locale}/blog`, label: 'Blog' },
               ]}
               loginLabel="Log in"
               signupLabel={dict.nav.signup}
