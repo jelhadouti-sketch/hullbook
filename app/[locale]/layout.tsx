@@ -17,6 +17,17 @@ export async function generateMetadata(
   return {
     metadataBase: new URL('https://www.hullbook.com'),
     manifest: '/manifest.webmanifest',
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-96.png', type: 'image/png', sizes: '96x96' },
+        { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+        { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+      ],
+      apple: '/apple-touch-icon.png',
+      shortcut: '/favicon.ico',
+    },
+    themeColor: '#0a1628',
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: {
