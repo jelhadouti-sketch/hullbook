@@ -48,6 +48,12 @@ export async function generateMetadata(
       description: dict.meta.description,
       images: ['https://www.hullbook.com/og-default.png'],
     },
+    verification: {
+      // To verify: go to bing.com/webmasters → add site → choose meta tag method → paste content value here
+      // other: { 'msvalidate.01': 'YOUR_BING_CODE' },
+      // To verify Yandex: go to webmaster.yandex.com → add site → meta tag method
+      // other: { 'yandex-verification': 'YOUR_YANDEX_CODE' },
+    },
     robots: {
       index: true,
       follow: true,

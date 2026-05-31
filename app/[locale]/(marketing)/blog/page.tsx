@@ -9,8 +9,20 @@ export const metadata: Metadata = {
 
 export default async function BlogIndex({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: BLOG_POSTS.map((post, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      url: \`https://www.hullbook.com/\${locale}/blog/\${post.slug}\`,
+      name: post.title,
+    })),
+  }
+
   return (
-    <main className="bg-paper-cream min-h-screen">
+    <main className="bg-paper-cream min-h-screen"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <header className="max-w-4xl mx-auto px-6 py-16">
         <Link href={`/${locale}`} className="text-sea text-sm hover:text-coral">← Back to HullBook</Link>
         <h1 className="font-serif text-5xl mt-8 mb-4 text-ink">Boat ownership, written down.</h1>

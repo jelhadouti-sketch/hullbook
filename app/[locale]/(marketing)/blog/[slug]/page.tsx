@@ -15,6 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title,
     description: post.description,
     keywords: post.keywords,
+    alternates: {
+      canonical: \`/\${(await params).locale}/blog/\${slug}\`,
+      languages: Object.fromEntries(['en','nl','fr','de','es','it'].map((l) => [l, \`https://www.hullbook.com/\${l}/blog/\${slug}\`])),
+    },
     openGraph: {
       title: post.title,
       description: post.description,
