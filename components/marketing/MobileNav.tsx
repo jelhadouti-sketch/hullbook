@@ -51,7 +51,7 @@ export function MobileNav({ locale, links, loginLabel, signupLabel }: Props) {
         </div>
         <nav className="flex-1 flex flex-col px-6 py-4 gap-1">
           {links.map((link) => (
-            <a
+            
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
