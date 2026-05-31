@@ -8,6 +8,7 @@ import {
   type Currency,
 } from '@/lib/currency';
 import { WaitlistForm } from '@/components/marketing/WaitlistForm';
+import { MobileNav } from '@/components/marketing/MobileNav';
 import { LanguageSwitcher } from '@/components/marketing/LanguageSwitcher';
 import { LogoMark } from '@/components/marketing/LogoMark';
 import { notFound } from 'next/navigation';
@@ -55,9 +56,20 @@ export default async function HomePage({
             <a href={`/${locale}/login`} className="hidden md:inline-flex items-center text-sm text-ink/70 hover:text-ink transition">
               Log in
             </a>
-            <a href={`/${locale}/signup`} className="inline-flex items-center gap-2 bg-ink text-paper-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink-deep transition shadow-sm">
+            <a href={`/${locale}/signup`} className="hidden md:inline-flex items-center gap-2 bg-ink text-paper-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink-deep transition shadow-sm">
               {dict.nav.signup}
             </a>
+            <MobileNav
+              locale={locale}
+              links={[
+                { href: '#how', label: dict.nav.howItWorks },
+                { href: '#features', label: 'Features' },
+                { href: '#pricing', label: dict.nav.pricing },
+                { href: '#faq', label: dict.nav.faq },
+              ]}
+              loginLabel="Log in"
+              signupLabel={dict.nav.signup}
+            />
           </div>
         </div>
       </nav>
