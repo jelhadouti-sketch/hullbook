@@ -30,7 +30,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
       <select
         value={current}
         onChange={handleChange}
-        className="appearance-none bg-transparent border border-black/15 pl-3 pr-8 py-1.5 text-sm cursor-pointer hover:border-black/30 transition-colors"
+        className="appearance-none bg-transparent border border-black/15 pl-2 pr-6 sm:pl-3 sm:pr-8 py-1 sm:py-1.5 text-xs sm:text-sm cursor-pointer hover:border-black/30 transition-colors max-w-[120px]"
       >
         {LOCALES.map((loc) => (
           <option key={loc} value={loc}>

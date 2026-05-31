@@ -36,10 +36,10 @@ export default async function HomePage({
   }
 
   return (
-    <main className="bg-paper-cream text-ink min-h-screen">
+    <main className="bg-paper-cream text-ink min-h-screen overflow-x-hidden">
       {/* ========== NAV ========== */}
       <nav className="sticky top-0 z-40 bg-paper-cream/95 backdrop-blur border-b border-black/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-5 flex items-center justify-between gap-6">
           <a href="#top" className="flex items-center gap-3">
             <LogoMark className="w-10 h-10" />
             <span className="text-2xl font-serif text-ink font-semibold">HullBook</span>
@@ -64,14 +64,14 @@ export default async function HomePage({
 
       {/* ========== HERO ========== */}
       <section id="top" className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-24 md:pt-28 md:pb-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 pt-16 pb-20 md:pt-28 md:pb-32">
           <div className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <div className="inline-flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-coral font-medium mb-8">
                 <span className="w-8 h-px bg-coral" />
                 {dict.hero.eyebrow}
               </div>
-              <h1 className="font-serif text-5xl md:text-7xl leading-[1.05] text-ink font-normal mb-8">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl leading-[1.05] text-ink font-normal mb-6 md:mb-8">
                 {dict.hero.title1}
                 <br />
                 <em className="text-coral not-italic font-normal">{dict.hero.title2}</em>
@@ -97,17 +97,17 @@ export default async function HomePage({
 
       {/* ========== STATS ========== */}
       <section className="bg-ink text-paper-cream py-20 border-y border-black/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-12 text-center md:text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 grid md:grid-cols-3 gap-12 text-center md:text-left">
           <div>
-            <p className="font-serif text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat1Num}</p>
+            <p className="font-serif text-4xl sm:text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat1Num}</p>
             <p className="text-paper-cream/70 text-sm leading-relaxed">{dict.stats.stat1Label}</p>
           </div>
           <div>
-            <p className="font-serif text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat2Num}</p>
+            <p className="font-serif text-4xl sm:text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat2Num}</p>
             <p className="text-paper-cream/70 text-sm leading-relaxed">{dict.stats.stat2Label}</p>
           </div>
           <div>
-            <p className="font-serif text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat3Num}</p>
+            <p className="font-serif text-4xl sm:text-5xl md:text-6xl text-brass mb-3">{dict.stats.stat3Num}</p>
             <p className="text-paper-cream/70 text-sm leading-relaxed">{dict.stats.stat3Label}</p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default async function HomePage({
 
       {/* ========== PROBLEM ========== */}
       <section id="problem" className="py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10">
           <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">01 · {dict.problem.section}</p>
           <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16 max-w-3xl">
             {dict.problem.title}
@@ -147,7 +147,7 @@ export default async function HomePage({
 
       {/* ========== HOW ========== */}
       <section id="how" className="py-24 md:py-32 bg-paper-fog border-y border-black/10">
-        <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
           <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">02 · {dict.how.section}</p>
           <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16 max-w-3xl">
             {dict.how.title}
@@ -174,7 +174,7 @@ export default async function HomePage({
 
       {/* ========== FEATURES ========== */}
       <section id="features" className="py-24 md:py-32">
-        <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
           <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">03 · {dict.features.section}</p>
           <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16 max-w-3xl">
             {dict.features.title}
@@ -192,17 +192,17 @@ export default async function HomePage({
 
       {/* ========== PRICING ========== */}
       <section id="pricing" className="py-24 md:py-32 bg-paper-fog border-y border-black/10">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10">
           <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4 text-center">04 · {dict.pricing.section}</p>
           <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-4 text-center">
             {dict.pricing.title}
           </h2>
           <p className="text-ink/70 text-center mb-16">{dict.pricing.subtitle}</p>
-          <div className="bg-white border border-ink/10 rounded-2xl p-10 md:p-14 shadow-xl">
+          <div className="bg-white border border-ink/10 rounded-2xl p-6 sm:p-10 md:p-14 shadow-xl">
             <div className="text-center mb-10">
               <p className="text-sm uppercase tracking-wider text-coral mb-3">{dict.pricing.planName}</p>
               <div className="flex items-baseline justify-center gap-2 mb-3">
-                <span className="font-serif text-7xl text-ink">{dict.pricing.planPrice}</span>
+                <span className="font-serif text-6xl sm:text-7xl text-ink">{dict.pricing.planPrice}</span>
                 <span className="text-ink/60 text-xl">{dict.pricing.planPeriod}</span>
               </div>
               <p className="text-sm text-ink/50">{dict.pricing.planNote}</p>
@@ -237,7 +237,7 @@ export default async function HomePage({
 
       {/* ========== TRUST ========== */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
           <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4 text-center">{dict.trust.section}</p>
           <h2 className="font-serif text-3xl md:text-4xl text-ink leading-tight mb-16 text-center">
             {dict.trust.title}
@@ -261,7 +261,7 @@ export default async function HomePage({
 
       {/* ========== FAQ ========== */}
       <section id="faq" className="py-24 md:py-32 border-t border-black/10">
-        <div className="max-w-4xl mx-auto px-6 md:px-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10">
           <p className="text-xs tracking-[0.2em] uppercase text-coral mb-4">05 · {dict.faq.section}</p>
           <h2 className="font-serif text-4xl md:text-5xl text-ink leading-tight mb-16">
             {dict.faq.title}
@@ -286,9 +286,9 @@ export default async function HomePage({
 
       {/* ========== FINAL CTA ========== */}
       <section className="py-24 md:py-32 bg-ink text-paper-cream">
-        <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-10 text-center">
           <p className="text-xs tracking-[0.2em] uppercase text-brass mb-6">{dict.final.eyebrow}</p>
-          <h2 className="font-serif text-5xl md:text-6xl leading-tight mb-6">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight mb-6">
             {dict.final.title1}{' '}
             <em className="italic text-brass not-italic">{dict.final.title2}</em>
           </h2>
@@ -306,7 +306,7 @@ export default async function HomePage({
 
       {/* ========== FOOTER ========== */}
       <footer style={{backgroundColor:"#0a1929",color:"#f4ead5",padding:"60px 0",borderTop:"4px solid #c97d5d"}}>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
             <LogoMark className="w-8 h-8" />
             <span className="text-lg font-serif text-paper-cream">HullBook</span>
