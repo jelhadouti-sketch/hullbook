@@ -28,7 +28,7 @@ const en = {
     emailPlaceholder: "your@email.com",
     ctaButton: "Start free trial",
     ctaSuccess: "You are in. Check your email to get started.",
-    note: "No credit card required · Cancel anytime · Your data stays yours",
+    note: "14 days free · Cancel in one click · 30-day money-back guarantee",
   },
   stats: {
     stat1Num: "$3,200",
@@ -114,9 +114,9 @@ const en = {
     bullet5: "CSV and JSON export anytime",
     bullet6: "Email support within 24 hours",
     bullet7: "Your data, exportable forever",
-    bullet8: "14-day free trial, no credit card",
+    bullet8: "14-day free trial, full refund for 30 days",
     ctaButton: "Start 14-day free trial",
-    trustLine: "No credit card required. Cancel anytime with one click.",
+    trustLine: "Start your 14-day trial. Cancel anytime with one click.",
   },
   trust: {
     section: "Built to trust",
@@ -149,9 +149,9 @@ const en = {
     eyebrow: "Ready?",
     title1: "Stop guessing.",
     title2: "Start knowing.",
-    lede: "Join boat owners who manage their costs with confidence. 14 days free, no credit card needed.",
+    lede: "Join boat owners who manage their costs with confidence. 14 days free, full refund within 30 days.",
     ctaButton: "Start 14-day free trial",
-    note: "No credit card · Cancel in one click · Full refund for 30 days",
+    note: "14 days free · Cancel in one click · Full refund for 30 days",
   },
   footer: {
     tagline: "The honest cost of owning your boat.",
