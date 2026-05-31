@@ -36,7 +36,8 @@ export function MobileNav({ locale, links, loginLabel, signupLabel }: Props) {
       )}
 
       <aside
-        className={`md:hidden fixed top-0 right-0 z-50 h-full w-72 max-w-[85vw] bg-paper-cream flex flex-col transform transition-transform duration-200 shadow-2xl ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        style={{backgroundColor:"#f5f0e1"}}
+        className={`md:hidden fixed top-0 right-0 z-50 h-full w-72 max-w-[85vw] flex flex-col transform transition-transform duration-200 shadow-2xl ${open ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-end p-4 border-b border-black/10">
           <button
