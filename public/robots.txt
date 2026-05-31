@@ -36,3 +36,6 @@ Disallow: /settings
 Disallow: /billing
 
 Sitemap: https://www.hullbook.com/sitemap.xml
+
+# Be gentle on the server
+Crawl-delay: 1

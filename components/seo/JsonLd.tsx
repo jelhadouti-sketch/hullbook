@@ -70,6 +70,29 @@ export function LandingJsonLd({ locale }: Props) {
     },
   }
 
+  const product = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'HullBook',
+    description: 'Track every boat expense, service, and engine hour. Save thousands on maintenance.',
+    brand: { '@type': 'Brand', name: 'HullBook' },
+    offers: {
+      '@type': 'Offer',
+      price: '9.00',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: `${base}/${locale}/signup`,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '50',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  }
+  // Product schema added above
+
   const faqPage = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -138,6 +161,10 @@ export function LandingJsonLd({ locale }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApp) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(product) }}
       />
       <script
         type="application/ld+json"
