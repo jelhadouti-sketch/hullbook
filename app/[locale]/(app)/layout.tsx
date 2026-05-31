@@ -38,7 +38,7 @@ export default async function AppLayout({
             : { email: user.email ?? '', fullName: null }
         }
       />
-      <main className="flex-1 p-6 md:p-10 bg-paper-cream">{children}</main>
+      <main className="flex-1 p-4 sm:p-6 md:p-10 bg-paper-cream overflow-x-hidden">{children}</main>
     </div>
   );
 }
