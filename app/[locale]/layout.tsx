@@ -12,7 +12,8 @@ export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> },
 ): Promise<Metadata> {
   const { locale } = await params;
-  if (!isLocale(locale)) return {};
+  if (!isLocale(locale)) return {
+    metadataBase: new URL('https://www.hullbook.com'),};
   const dict = getDictionary(locale);
   return {
     title: dict.meta.title,
@@ -26,7 +27,28 @@ export async function generateMetadata(
       description: dict.meta.description,
       locale: locale,
       type: 'website',
+      siteName: 'HullBook',
+      images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'HullBook' }],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: ['/og-default.png'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
+    keywords: ['boat expenses', 'boat maintenance tracker', 'boat ownership app', 'marine maintenance log', 'engine hours tracker', 'yacht expenses', 'sailing expense tracker'],
+    authors: [{ name: 'HullBook' }],
   };
 }
 

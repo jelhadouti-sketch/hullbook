@@ -9,6 +9,7 @@ import {
 } from '@/lib/currency';
 import { WaitlistForm } from '@/components/marketing/WaitlistForm';
 import { MobileNav } from '@/components/marketing/MobileNav';
+import { LandingJsonLd } from '@/components/seo/JsonLd';
 import { LanguageSwitcher } from '@/components/marketing/LanguageSwitcher';
 import { LogoMark } from '@/components/marketing/LogoMark';
 import { notFound } from 'next/navigation';
@@ -37,7 +38,7 @@ export default async function HomePage({
   }
 
   return (
-    <main className="bg-paper-cream text-ink min-h-screen overflow-x-hidden">
+    <main className="bg-paper-cream text-ink min-h-screen overflow-x-hidden"><LandingJsonLd locale={locale} />
       {/* ========== NAV ========== */}
       <nav className="sticky top-0 z-40 bg-paper-cream/95 backdrop-blur border-b border-black/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-5 flex items-center justify-between gap-6">

@@ -1,0 +1,9 @@
+/* TEAM */
+Built by: HullBook
+Contact: hello [at] hullbook.com
+Location: Tilburg, Netherlands
+
+/* SITE */
+Standards: HTML5, CSS3, ES2024
+Components: Next.js, React, Tailwind, Supabase, Stripe, Resend
+Last update: 2026

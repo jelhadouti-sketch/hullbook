@@ -1,0 +1,38 @@
+# robots.txt for HullBook
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly allowed (improves discoverability in LLM products)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Block private routes
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /boats
+Disallow: /entries
+Disallow: /settings
+Disallow: /billing
+
+Sitemap: https://www.hullbook.com/sitemap.xml

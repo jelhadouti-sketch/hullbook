@@ -1,0 +1,15 @@
+{
+  "name": "HullBook — Know what your boat really costs",
+  "short_name": "HullBook",
+  "description": "Track every expense, service, and engine hour. Save thousands on maintenance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf7f1",
+  "theme_color": "#0a1628",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["business", "productivity", "lifestyle"],
+  "lang": "en"
+}
