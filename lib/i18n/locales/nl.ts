@@ -24,7 +24,7 @@ const nl: TranslationShape = {
     emailPlaceholder: "your@email.com",
     ctaButton: "Start gratis",
     ctaSuccess: "U bent binnen. Bekijk uw e-mail om te beginnen.",
-    note: "Geen creditcard nodig · Altijd opzegbaar · Uw data blijft van u",
+    note: "14 dagen gratis · Altijd opzegbaar · 30 dagen geld-terug-garantie",
   },
   stats: {
     stat1Num: "€3.000",
@@ -110,9 +110,9 @@ const nl: TranslationShape = {
     bullet5: "CSV en JSON export op elk moment",
     bullet6: "E-mail ondersteuning binnen 24 uur",
     bullet7: "Uw data, voor altijd exporteerbaar",
-    bullet8: "14 dagen gratis, geen creditcard",
+    bullet8: "14 dagen gratis, volledige terugbetaling binnen 30 dagen",
     ctaButton: "Start 14-daagse gratis periode",
-    trustLine: "Geen creditcard nodig om te starten. Altijd opzegbaar met één klik.",
+    trustLine: "Start uw 14 dagen gratis proefperiode. Altijd opzegbaar met één klik.",
   },
   trust: {
     section: "Gebouwd om te vertrouwen",
@@ -147,7 +147,7 @@ const nl: TranslationShape = {
     title2: "Begin met weten.",
     lede: "Sluit u aan bij booteigenaren die hun kosten vol vertrouwen beheren. 14 dagen gratis.",
     ctaButton: "Start 14-daagse gratis periode",
-    note: "Geen creditcard · Opzeggen met een klik · Volledige terugbetaling 30 dagen",
+    note: "14 dagen gratis · Opzeggen met een klik · Volledige terugbetaling 30 dagen",
   },
   footer: {
     tagline: "De eerlijke kosten van uw boot bezitten.",

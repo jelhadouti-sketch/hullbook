@@ -24,7 +24,7 @@ const es: TranslationShape = {
     emailPlaceholder: "your@email.com",
     ctaButton: "Prueba gratis",
     ctaSuccess: "Está dentro. Revise su correo.",
-    note: "Sin tarjeta · Cancele cuando quiera · Sus datos son suyos",
+    note: "14 días gratis · Cancele cuando quiera · Garantía de 30 días",
   },
   stats: {
     stat1Num: "3.000 €",
@@ -110,9 +110,9 @@ const es: TranslationShape = {
     bullet5: "Exportación CSV y JSON en cualquier momento",
     bullet6: "Soporte por email en 24 horas",
     bullet7: "Sus datos, exportables para siempre",
-    bullet8: "14 días gratis, sin tarjeta",
+    bullet8: "14 días gratis, garantía de devolución de 30 días",
     ctaButton: "Comenzar prueba gratuita de 14 días",
-    trustLine: "Sin tarjeta para empezar. Cancele con un clic.",
+    trustLine: "Comience su prueba de 14 días. Cancele con un clic.",
   },
   trust: {
     section: "Construido para confiar",
@@ -147,7 +147,7 @@ const es: TranslationShape = {
     title2: "Empiece a saber.",
     lede: "Únase a propietarios que gestionan sus costes con confianza. 14 días gratis.",
     ctaButton: "Comenzar prueba gratuita de 14 días",
-    note: "Sin tarjeta · Cancele con un clic · Reembolso 30 días",
+    note: "14 días gratis · Cancele con un clic · Reembolso 30 días",
   },
   footer: {
     tagline: "El coste honesto de tener su barco.",

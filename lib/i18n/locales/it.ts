@@ -110,7 +110,7 @@ const it: TranslationShape = {
     bullet5: "Esportazione CSV e JSON in qualsiasi momento",
     bullet6: "Supporto email entro 24 ore",
     bullet7: "I tuoi dati, esportabili per sempre",
-    bullet8: "14 giorni gratuiti, senza carta",
+    bullet8: "14 giorni gratis, rimborso completo entro 30 giorni",
     ctaButton: "Inizia prova gratuita di 14 giorni",
     trustLine: "Nessuna carta per iniziare. Cancella con un clic.",
   },
