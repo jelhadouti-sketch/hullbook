@@ -21,7 +21,7 @@ export async function generateMetadata(
     description: dict.meta.description,
     alternates: {
       canonical: `/${locale}`,
-      languages: Object.fromEntries(LOCALES.map((l) => [l, `/${l}`])),
+      languages: Object.fromEntries(LOCALES.map((l) => [l, `https://www.hullbook.com/${l}`])),
     },
     openGraph: {
       title: dict.meta.title,
