@@ -48,8 +48,12 @@ export async function POST(req: NextRequest) {
       line_items: [{ price: PRICE_IDS[interval], quantity: 1 }],
       subscription_data: {
         trial_period_days: 14,
+        trial_settings: {
+          end_behavior: { missing_payment_method: 'cancel' },
+        },
         metadata: { user_id: user.id },
       },
+      payment_method_collection: 'always',
       success_url: `${siteUrl}/${locale}/dashboard?checkout=success`,
       cancel_url: `${siteUrl}/${locale}/dashboard?checkout=cancelled`,
       allow_promotion_codes: true,
