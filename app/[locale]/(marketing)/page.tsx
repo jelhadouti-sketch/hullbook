@@ -305,7 +305,7 @@ export default async function HomePage({
       </section>
 
       {/* ========== FOOTER ========== */}
-      <footer className="bg-ink-deep text-paper-cream py-20 border-t-4 border-coral">
+      <footer style={{backgroundColor:"#0a1929",color:"#f4ead5",padding:"60px 0",borderTop:"4px solid #c97d5d"}}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
             <LogoMark className="w-8 h-8" />
@@ -313,16 +313,16 @@ export default async function HomePage({
           </div>
           <p className="text-sm">{dict.footer.copyright}</p>
           <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-base font-medium">
-            <a href={`/${locale}/privacy`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">{dict.footer.privacy}</a>
-            <a href={`/${locale}/terms`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">{dict.footer.terms}</a>
-            <a href={`/${locale}/cookies`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Cookies</a>
-            <a href={`/${locale}/refund`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Refunds</a>
-            <a href={`/${locale}/security`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Security</a>
-            <a href={`/${locale}/imprint`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Imprint</a>
-            <a href={`/${locale}/acceptable-use`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Acceptable Use</a>
-            <a href={`/${locale}/dpa`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">DPA</a>
-            <a href={`/${locale}/data-request`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Your Data</a>
-            <a href="mailto:hello@hullbook.com" className="text-paper-cream hover:text-coral transition underline underline-offset-4">{dict.footer.contact}</a>
+            <a href={`/${locale}/privacy`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>{dict.footer.privacy}</a>
+            <a href={`/${locale}/terms`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>{dict.footer.terms}</a>
+            <a href={`/${locale}/cookies`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Cookies</a>
+            <a href={`/${locale}/refund`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Refunds</a>
+            <a href={`/${locale}/security`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Security</a>
+            <a href={`/${locale}/imprint`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Imprint</a>
+            <a href={`/${locale}/acceptable-use`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Acceptable Use</a>
+            <a href={`/${locale}/dpa`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>DPA</a>
+            <a href={`/${locale}/data-request`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Your Data</a>
+            <a href="mailto:hello@hullbook.com" style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>{dict.footer.contact}</a>
           </div>
         </div>
       </footer>
