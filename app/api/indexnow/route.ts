@@ -5,7 +5,8 @@ const HOST = 'www.hullbook.com'
 
 const URLS = [
   '/en', '/nl', '/fr', '/de', '/es', '/it',
-  '/en/blog', '/en/blog/how-much-does-it-cost-to-own-a-boat',
+  '/en/blog',
+  '/en/blog/how-much-does-it-cost-to-own-a-boat',
   '/en/blog/boat-maintenance-checklist',
   '/en/blog/track-boat-expenses-taxes',
   '/en/blog/best-boat-ownership-apps-2026',
