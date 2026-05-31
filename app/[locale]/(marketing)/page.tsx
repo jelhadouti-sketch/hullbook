@@ -315,6 +315,13 @@ export default async function HomePage({
           <div className="flex items-center gap-6 text-sm">
             <a href={`/${locale}/privacy`} className="hover:text-paper-cream transition">{dict.footer.privacy}</a>
             <a href={`/${locale}/terms`} className="hover:text-paper-cream transition">{dict.footer.terms}</a>
+            <a href={`/${locale}/cookies`} className="hover:text-paper-cream transition">Cookies</a>
+            <a href={`/${locale}/refund`} className="hover:text-paper-cream transition">Refunds</a>
+            <a href={`/${locale}/security`} className="hover:text-paper-cream transition">Security</a>
+            <a href={`/${locale}/imprint`} className="hover:text-paper-cream transition">Imprint</a>
+            <a href={`/${locale}/acceptable-use`} className="hover:text-paper-cream transition">Acceptable Use</a>
+            <a href={`/${locale}/dpa`} className="hover:text-paper-cream transition">DPA</a>
+            <a href={`/${locale}/data-request`} className="hover:text-paper-cream transition">Your Data</a>
             <a href="mailto:hello@hullbook.com" className="hover:text-paper-cream transition">{dict.footer.contact}</a>
           </div>
         </div>

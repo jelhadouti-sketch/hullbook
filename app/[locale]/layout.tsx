@@ -1,3 +1,4 @@
+import { CookieBanner } from '@/components/marketing/CookieBanner'
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { isLocale, LOCALES, LOCALE_META } from '@/lib/i18n/config';
@@ -43,6 +44,7 @@ export default async function LocaleLayout({
   return (
     <div data-locale={locale} dir={LOCALE_META[locale].dir}>
       {children}
+        <CookieBanner locale={locale} />
     </div>
   );
 }
