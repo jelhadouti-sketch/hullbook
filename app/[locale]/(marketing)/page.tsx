@@ -335,6 +335,7 @@ export default async function HomePage({
             <a href={`/${locale}/acceptable-use`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Acceptable Use</a>
             <a href={`/${locale}/dpa`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>DPA</a>
             <a href={`/${locale}/data-request`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Your Data</a>
+            <a href={`/${locale}/blog`} style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>Blog</a>
             <a href="mailto:hello@hullbook.com" style={{color:"#f4ead5",textDecoration:"underline",textUnderlineOffset:"4px",fontWeight:500}}>{dict.footer.contact}</a>
           </div>
         </div>
