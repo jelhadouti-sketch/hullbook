@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hullbook.com'),
@@ -19,7 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="paper-grain">{children}</body>
+      <body className="paper-grain">{children}        <GoogleAnalytics />
+      </body>
     </html>
   );
 }
