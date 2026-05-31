@@ -305,24 +305,24 @@ export default async function HomePage({
       </section>
 
       {/* ========== FOOTER ========== */}
-      <footer className="bg-ink-deep text-paper-cream/60 py-12">
+      <footer className="bg-ink-deep text-paper-cream py-20 border-t-4 border-coral">
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
             <LogoMark className="w-8 h-8" />
             <span className="text-lg font-serif text-paper-cream">HullBook</span>
           </div>
           <p className="text-sm">{dict.footer.copyright}</p>
-          <div className="flex items-center gap-6 text-sm">
-            <a href={`/${locale}/privacy`} className="hover:text-paper-cream transition">{dict.footer.privacy}</a>
-            <a href={`/${locale}/terms`} className="hover:text-paper-cream transition">{dict.footer.terms}</a>
-            <a href={`/${locale}/cookies`} className="hover:text-paper-cream transition">Cookies</a>
-            <a href={`/${locale}/refund`} className="hover:text-paper-cream transition">Refunds</a>
-            <a href={`/${locale}/security`} className="hover:text-paper-cream transition">Security</a>
-            <a href={`/${locale}/imprint`} className="hover:text-paper-cream transition">Imprint</a>
-            <a href={`/${locale}/acceptable-use`} className="hover:text-paper-cream transition">Acceptable Use</a>
-            <a href={`/${locale}/dpa`} className="hover:text-paper-cream transition">DPA</a>
-            <a href={`/${locale}/data-request`} className="hover:text-paper-cream transition">Your Data</a>
-            <a href="mailto:hello@hullbook.com" className="hover:text-paper-cream transition">{dict.footer.contact}</a>
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-base font-medium">
+            <a href={`/${locale}/privacy`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">{dict.footer.privacy}</a>
+            <a href={`/${locale}/terms`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">{dict.footer.terms}</a>
+            <a href={`/${locale}/cookies`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Cookies</a>
+            <a href={`/${locale}/refund`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Refunds</a>
+            <a href={`/${locale}/security`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Security</a>
+            <a href={`/${locale}/imprint`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Imprint</a>
+            <a href={`/${locale}/acceptable-use`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Acceptable Use</a>
+            <a href={`/${locale}/dpa`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">DPA</a>
+            <a href={`/${locale}/data-request`} className="text-paper-cream hover:text-coral transition underline underline-offset-4">Your Data</a>
+            <a href="mailto:hello@hullbook.com" className="text-paper-cream hover:text-coral transition underline underline-offset-4">{dict.footer.contact}</a>
           </div>
         </div>
       </footer>
