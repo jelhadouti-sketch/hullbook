@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { requireSubscription } from '@/lib/requireSubscription';
 import { createClient } from '@/lib/supabase/server';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n';
@@ -15,6 +16,7 @@ export default async function NewEntryPage({
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
+  await requireSubscription(locale);
   const dict = getDictionary(locale);
 
   const { boat: presetBoatId } = await searchParams;

@@ -180,7 +180,7 @@ const en = {
     loginTitle: 'Welcome back',
     loginSubtitle: 'Sign in to your HullBook.',
     signupTitle: 'Start your logbook',
-    signupSubtitle: '14-day free trial. No credit card required.',
+    signupSubtitle: 'Create your account to start your 14-day trial.',
     email: 'Email',
     password: 'Password',
     fullName: 'Your name',

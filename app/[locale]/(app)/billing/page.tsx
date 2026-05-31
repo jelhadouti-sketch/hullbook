@@ -17,10 +17,10 @@ export default async function BillingPage({
     <main className="min-h-screen bg-paper-cream py-16 px-6">
       <div className="max-w-3xl mx-auto">
         <h1 className="font-serif text-4xl font-normal tracking-tight text-sea-deep mb-3">
-          Start your 14-day free trial
+          Add your payment details to start
         </h1>
         <p className="text-ink-mute mb-10 text-lg">
-          No card required. Cancel anytime. Choose a plan to lock in your trial.
+          Your 14-day free trial starts as soon as you add a card. You won&apos;t be charged until day 15. Cancel anytime with one click.
         </p>
         <BillingCheckout locale={locale} />
       </div>

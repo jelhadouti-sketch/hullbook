@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { requireSubscription } from '@/lib/requireSubscription';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n';
 import { BoatForm } from '@/components/app/BoatForm';
@@ -11,6 +12,7 @@ export default async function NewBoatPage({
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
+  await requireSubscription(locale);
   const dict = getDictionary(locale);
 
   return (

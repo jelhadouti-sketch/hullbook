@@ -176,7 +176,7 @@ const es: TranslationShape = {
     loginTitle: 'Bienvenido de nuevo',
     loginSubtitle: 'Accede a tu HullBook.',
     signupTitle: 'Empieza tu cuaderno de bitácora',
-    signupSubtitle: 'Prueba gratuita de 14 días. Sin tarjeta de crédito.',
+    signupSubtitle: 'Create your account to start your 14-day trial.',
     email: 'Email',
     password: 'Contraseña',
     fullName: 'Tu nombre',

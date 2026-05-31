@@ -14,6 +14,7 @@ export default async function SettingsPage({
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
+  await requireSubscription(locale);
   const dict = getDictionary(locale);
 
   const supabase = await createClient();

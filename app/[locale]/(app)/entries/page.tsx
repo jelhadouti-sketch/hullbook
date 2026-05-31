@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { requireSubscription } from '@/lib/requireSubscription';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { isLocale, type Locale } from '@/lib/i18n/config';
@@ -22,6 +23,7 @@ export default async function EntriesListPage({
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
+  await requireSubscription(locale);
   const dict = getDictionary(locale);
 
   const supabase = await createClient();

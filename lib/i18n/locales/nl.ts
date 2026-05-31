@@ -176,7 +176,7 @@ const nl: TranslationShape = {
     loginTitle: 'Welkom terug',
     loginSubtitle: 'Log in bij je HullBook.',
     signupTitle: 'Start je logboek',
-    signupSubtitle: '14-daagse gratis proefperiode. Geen creditcard vereist.',
+    signupSubtitle: 'Create your account to start your 14-day trial.',
     email: 'E-mail',
     password: 'Wachtwoord',
     fullName: 'Je naam',

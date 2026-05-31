@@ -176,7 +176,7 @@ const fr: TranslationShape = {
     loginTitle: 'Bon retour',
     loginSubtitle: 'Connectez-vous à votre HullBook.',
     signupTitle: 'Commencez votre carnet de bord',
-    signupSubtitle: "Essai gratuit de 14 jours. Aucune carte de crédit requise.",
+    signupSubtitle: "Create your account to start your 14-day trial.",
     email: 'Email',
     password: 'Mot de passe',
     fullName: 'Votre nom',
