@@ -41,7 +41,7 @@ export function SignupForm({
         email: email.trim(),
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/${locale}/auth/callback`,
+          emailRedirectTo: `${window.location.origin}/${locale}/callback`,
           data: {
             full_name: fullName.trim() || null,
             locale,
