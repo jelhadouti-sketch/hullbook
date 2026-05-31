@@ -12,10 +12,11 @@ export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> },
 ): Promise<Metadata> {
   const { locale } = await params;
-  if (!isLocale(locale)) return {
-    metadataBase: new URL('https://www.hullbook.com'),};
+  if (!isLocale(locale)) return {};
   const dict = getDictionary(locale);
   return {
+    metadataBase: new URL('https://www.hullbook.com'),
+    manifest: '/manifest.webmanifest',
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: {
