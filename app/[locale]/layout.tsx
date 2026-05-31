@@ -40,13 +40,13 @@ export async function generateMetadata(
       locale: locale,
       type: 'website',
       siteName: 'HullBook',
-      images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'HullBook' }],
+      images: [{ url: 'https://www.hullbook.com/og-default.png', width: 1200, height: 630, alt: 'HullBook — Know what your boat really costs.' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: dict.meta.title,
       description: dict.meta.description,
-      images: ['/og-default.png'],
+      images: ['https://www.hullbook.com/og-default.png'],
     },
     robots: {
       index: true,

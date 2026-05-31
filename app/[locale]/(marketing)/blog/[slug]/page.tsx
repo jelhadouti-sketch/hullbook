@@ -48,6 +48,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `https://www.hullbook.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://www.hullbook.com/${locale}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://www.hullbook.com/${locale}/blog/${post.slug}` },
+    ],
+  }
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -64,6 +74,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <main className="bg-paper-cream min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <article className="max-w-3xl mx-auto px-6 py-16">
         <Link href={`/${locale}/blog`} className="text-sea text-sm hover:text-coral">← All articles</Link>
@@ -73,6 +84,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p className="text-xl text-ink/60 leading-relaxed">{post.description}</p>
         </header>
         <div>{renderBody(post.body)}</div>
+        <section className="mt-16 pt-12 border-t border-black/10">
+          <h3 className="font-serif text-2xl text-ink mb-6">Related articles</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 4).map((rel) => (
+              <Link key={rel.slug} href={`/${locale}/blog/${rel.slug}`} className="block p-5 bg-white border border-black/10 rounded-xl hover:border-sea transition">
+                <div className="text-xs text-coral uppercase tracking-wider mb-2 font-medium">{rel.readMinutes} min</div>
+                <div className="font-serif text-lg text-ink leading-tight">{rel.title}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
         <footer className="mt-16 pt-12 border-t border-black/10">
           <div className="bg-ink text-paper-cream p-10 rounded-2xl text-center">
             <p className="text-sm text-brass uppercase tracking-wider mb-3">Ready?</p>

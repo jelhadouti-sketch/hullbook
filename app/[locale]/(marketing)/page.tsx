@@ -51,6 +51,7 @@ export default async function HomePage({
             <a href="#features" className="hover:text-ink transition">Features</a>
             <a href="#pricing" className="hover:text-ink transition">{dict.nav.pricing}</a>
             <a href="#faq" className="hover:text-ink transition">{dict.nav.faq}</a>
+            <a href={`/${locale}/blog`} className="hover:text-ink transition">Blog</a>
           </div>
           <div className="flex items-center gap-3">
             <LanguageSwitcher current={locale} />
@@ -67,6 +68,7 @@ export default async function HomePage({
                 { href: '#features', label: 'Features' },
                 { href: '#pricing', label: dict.nav.pricing },
                 { href: '#faq', label: dict.nav.faq },
+                { href: \`/\${locale}/blog\`, label: 'Blog' },
               ]}
               loginLabel="Log in"
               signupLabel={dict.nav.signup}
