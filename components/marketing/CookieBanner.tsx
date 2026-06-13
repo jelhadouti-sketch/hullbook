@@ -4,11 +4,20 @@ import { useEffect, useState } from 'react'
 
 const COOKIE_KEY = 'hb_cookies'
 
+function isNativeApp() {
+  if (typeof window === 'undefined') return false
+  const w = window as any
+  return !!(w.Capacitor && (typeof w.Capacitor.isNativePlatform === 'function' ? w.Capacitor.isNativePlatform() : w.Capacitor.isNative))
+}
+
 export function CookieBanner({ locale }: { locale: string }) {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
     if (typeof document === 'undefined') return
+    // Inside the native app we use only essential cookies and do not track users,
+    // so no consent banner is shown.
+    if (isNativeApp()) return
     const has = document.cookie.split('; ').find((c) => c.startsWith(COOKIE_KEY + '='))
     if (!has) setShow(true)
   }, [])
