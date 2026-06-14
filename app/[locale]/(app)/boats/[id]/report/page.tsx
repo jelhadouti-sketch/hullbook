@@ -1,4 +1,5 @@
 import { notFound, redirect } from 'next/navigation';
+import { requireSubscription } from '@/lib/requireSubscription';
 import { createClient } from '@/lib/supabase/server';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n';

@@ -1,9 +1,11 @@
 import { notFound, redirect } from 'next/navigation';
+import { requireSubscription } from '@/lib/requireSubscription';
 import { createClient } from '@/lib/supabase/server';
 import { isLocale, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n';
 import { isCurrency, type Currency } from '@/lib/currency';
 import { SettingsForm } from '@/components/app/SettingsForm';
+import { DeleteAccount } from '@/components/app/DeleteAccount';
 import { User } from 'lucide-react';
 
 export default async function SettingsPage({
@@ -64,6 +66,8 @@ export default async function SettingsPage({
           email={profile?.email ?? user.email ?? ''}
         />
       </div>
+
+      <DeleteAccount locale={locale} />
     </div>
   );
 }

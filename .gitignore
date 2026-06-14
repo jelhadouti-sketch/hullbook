@@ -9,3 +9,10 @@ out/
 .vscode/
 .idea/
 next-env.d.ts
+.vercel
+
+# Local helper scripts and backups (keep out of git)
+*.bak
+.backup-*/
+patch_*.py
+run_*.sh

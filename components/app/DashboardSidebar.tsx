@@ -26,6 +26,9 @@ export function DashboardSidebar({ locale, dict, profile }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Billing/paywall is a standalone page — no app nav here.
+  if (pathname?.endsWith('/billing')) return null;
+
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + '/');
 
