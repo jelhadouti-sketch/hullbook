@@ -39,7 +39,7 @@ export function BillingCheckout({ locale }: { locale: string }) {
 
       if (isNativeApp()) {
         // App Store rule 3.1.1: complete payment in the external browser, not in-app.
-        window.open(data.url, '_system')
+        window.location.href = data.url
         setOpened(true)
         setLoading(null)
       } else {
