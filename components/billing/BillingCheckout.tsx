@@ -3,9 +3,16 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 
+function isNativeApp() {
+  if (typeof window === 'undefined') return false
+  const w = window as any
+  return !!(w.Capacitor && (typeof w.Capacitor.isNativePlatform === 'function' ? w.Capacitor.isNativePlatform() : w.Capacitor.isNative))
+}
+
 export function BillingCheckout({ locale }: { locale: string }) {
   const [loading, setLoading] = useState<'monthly' | 'yearly' | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [opened, setOpened] = useState(false)
 
   async function startCheckout(interval: 'monthly' | 'yearly') {
     setError(null)
@@ -29,11 +36,36 @@ export function BillingCheckout({ locale }: { locale: string }) {
 
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Checkout failed')
-      window.location.href = data.url
+
+      if (isNativeApp()) {
+        // App Store rule 3.1.1: complete payment in the external browser, not in-app.
+        window.open(data.url, '_system')
+        setOpened(true)
+        setLoading(null)
+      } else {
+        window.location.href = data.url
+      }
     } catch (e: any) {
       setError(e.message)
       setLoading(null)
     }
+  }
+
+  if (opened) {
+    return (
+      <div className="p-8 bg-white border border-black/10">
+        <h2 className="font-serif text-2xl text-sea-deep mb-3">Finish in your browser</h2>
+        <p className="text-ink-mute mb-6">
+          We opened your secure checkout in your browser. Complete your payment there, then return to HullBook and tap continue.
+        </p>
+        <button
+          onClick={() => { window.location.href = `/${locale}/dashboard` }}
+          className="inline-flex items-center gap-2 bg-ink text-paper-cream px-6 py-3 text-sm font-medium"
+        >
+          I&apos;ve completed payment — continue
+        </button>
+      </div>
+    )
   }
 
   return (
