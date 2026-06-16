@@ -25,6 +25,20 @@ export function BillingCheckout({ locale }: { locale: string }) {
         return
       }
 
+      if (isNativeApp()) {
+        // iOS app: pay with Apple In-App Purchase (App Store requirement 3.1.1)
+        const { initRevenueCat, purchaseInterval } = await import('@/lib/revenuecat')
+        await initRevenueCat(session.user.id)
+        const active = await purchaseInterval(interval)
+        if (active) {
+          window.location.href = `/${locale}/dashboard`
+        } else {
+          setError('Purchase could not be completed. Please try again.')
+          setLoading(null)
+        }
+        return
+      }
+
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: {
@@ -37,15 +51,12 @@ export function BillingCheckout({ locale }: { locale: string }) {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Checkout failed')
 
-      if (isNativeApp()) {
-        // App Store rule 3.1.1: complete payment in the external browser, not in-app.
-        window.location.href = data.url
-        setOpened(true)
-        setLoading(null)
-      } else {
-        window.location.href = data.url
-      }
+      window.location.href = data.url
     } catch (e: any) {
+      if (e && e.userCancelled) {
+        setLoading(null)
+        return
+      }
       setError(e.message)
       setLoading(null)
     }
