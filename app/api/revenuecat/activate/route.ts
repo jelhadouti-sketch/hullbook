@@ -3,12 +3,16 @@ import { createClient } from '@supabase/supabase-js'
 
 export const runtime = 'nodejs'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+export async function GET() {
+  return NextResponse.json({ version: 'activate-v2', ts: Date.now() })
+}
 
 export async function POST(req: NextRequest) {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+
   const authHeader = req.headers.get('authorization') || ''
   const token = authHeader.replace('Bearer ', '').trim()
   if (!token) return NextResponse.json({ error: 'No token' }, { status: 401 })
