@@ -2,7 +2,6 @@ import { Purchases } from '@revenuecat/purchases-capacitor'
 import { Capacitor } from '@capacitor/core'
 
 const APPLE_API_KEY = 'appl_MxIJUWhMVLvqNMDJWYgIpRQWwov'
-const ENTITLEMENT_ID = 'Hullbook Pro'
 
 let configured = false
 
@@ -20,6 +19,15 @@ export async function initRevenueCat(appUserId: string): Promise<void> {
   configured = true
 }
 
+function anyActiveEntitlement(info: any): boolean {
+  try {
+    const active = info && info.entitlements && info.entitlements.active
+    return !!active && Object.keys(active).length > 0
+  } catch {
+    return false
+  }
+}
+
 export async function purchaseInterval(interval: 'monthly' | 'yearly'): Promise<boolean> {
   const offerings = await Purchases.getOfferings()
   const current = offerings.current
@@ -30,6 +38,26 @@ export async function purchaseInterval(interval: 'monthly' | 'yearly'): Promise<
   if (!pkg) {
     throw new Error('That plan is not available right now.')
   }
-  const result = await Purchases.purchasePackage({ aPackage: pkg })
-  return typeof result.customerInfo.entitlements.active[ENTITLEMENT_ID] !== 'undefined'
+
+  try {
+    const result = await Purchases.purchasePackage({ aPackage: pkg })
+    if (anyActiveEntitlement(result.customerInfo)) return true
+  } catch (e: any) {
+    const cancelled = e && (e.userCancelled || e.code === '1' || (e.message && String(e.message).toLowerCase().indexOf('cancel') !== -1))
+    if (cancelled) {
+      throw e
+    }
+  }
+
+  try {
+    const restored = await Purchases.restorePurchases()
+    if (anyActiveEntitlement(restored.customerInfo)) return true
+  } catch {}
+
+  try {
+    const info = await Purchases.getCustomerInfo()
+    if (anyActiveEntitlement(info.customerInfo)) return true
+  } catch {}
+
+  return false
 }
