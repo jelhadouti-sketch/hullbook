@@ -29,10 +29,18 @@ export function BillingCheckout({ locale }: { locale: string }) {
         // iOS app: pay with Apple In-App Purchase (App Store requirement 3.1.1)
         const { initRevenueCat, purchaseInterval } = await import('@/lib/revenuecat')
         await initRevenueCat(session.user.id)
-        const active = await purchaseInterval(interval)
+        let active = false
+        try {
+          active = await purchaseInterval(interval)
+        } catch (err: any) {
+          alert('Purchase error: ' + (err && err.message ? err.message : String(err)))
+          setLoading(null)
+          return
+        }
         if (active) {
+          let status = 0
           try {
-            await fetch('/api/revenuecat/activate', {
+            const r = await fetch('/api/revenuecat/activate', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -40,9 +48,18 @@ export function BillingCheckout({ locale }: { locale: string }) {
               },
               body: JSON.stringify({ interval }),
             })
-          } catch {}
+            status = r.status
+          } catch (e: any) {
+            alert('Unlock call failed: ' + (e && e.message ? e.message : String(e)))
+          }
+          if (status === 200) {
+            alert('Unlock OK - opening dashboard')
+          } else {
+            alert('Unlock returned status ' + status)
+          }
           window.location.href = `/${locale}/dashboard`
         } else {
+          alert('Purchase done but entitlement NOT active')
           setError('Purchase could not be completed. Please try again.')
           setLoading(null)
         }
