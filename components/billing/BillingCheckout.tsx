@@ -33,14 +33,14 @@ export function BillingCheckout({ locale }: { locale: string }) {
         try {
           active = await purchaseInterval(interval)
         } catch (err: any) {
-          alert('Purchase error: ' + (err && err.message ? err.message : String(err)))
+          if (err && err.userCancelled) { setLoading(null); return }
+          setError('Purchase could not be completed. Please try again.')
           setLoading(null)
           return
         }
         if (active) {
-          let status = 0
           try {
-            const r = await fetch('/api/revenuecat/activate', {
+            await fetch('/api/revenuecat/activate', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -48,18 +48,9 @@ export function BillingCheckout({ locale }: { locale: string }) {
               },
               body: JSON.stringify({ interval }),
             })
-            status = r.status
-          } catch (e: any) {
-            alert('Unlock call failed: ' + (e && e.message ? e.message : String(e)))
-          }
-          if (status === 200) {
-            alert('Unlock OK - opening dashboard')
-          } else {
-            alert('Unlock returned status ' + status)
-          }
+          } catch {}
           window.location.href = `/${locale}/dashboard`
         } else {
-          alert('Purchase done but entitlement NOT active')
           setError('Purchase could not be completed. Please try again.')
           setLoading(null)
         }
