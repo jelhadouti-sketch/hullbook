@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js'
 export const runtime = 'nodejs'
 
 export async function GET() {
-  return NextResponse.json({ version: 'activate-v2', ts: Date.now() })
+  return NextResponse.json({ version: 'activate-v3', ts: Date.now() })
 }
 
 export async function POST(req: NextRequest) {
