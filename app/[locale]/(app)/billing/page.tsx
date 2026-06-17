@@ -24,7 +24,6 @@ export default async function BillingPage({
         <p className="text-ink-mute mb-10 text-lg">
           Your 14-day free trial starts as soon as you add a card. You won&apos;t be charged until day 15. Cancel anytime with one click.
         </p>
-        <div className="text-xs font-mono text-sea mb-4">build v2</div>
         <BillingCheckout locale={locale} />
       </div>
     </main>
