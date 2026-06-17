@@ -31,6 +31,16 @@ export function BillingCheckout({ locale }: { locale: string }) {
         await initRevenueCat(session.user.id)
         const active = await purchaseInterval(interval)
         if (active) {
+          try {
+            await fetch('/api/revenuecat/activate', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${session.access_token}`,
+              },
+              body: JSON.stringify({ interval }),
+            })
+          } catch {}
           window.location.href = `/${locale}/dashboard`
         } else {
           setError('Purchase could not be completed. Please try again.')
