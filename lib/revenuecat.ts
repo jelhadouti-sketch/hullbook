@@ -61,3 +61,17 @@ export async function purchaseInterval(interval: 'monthly' | 'yearly'): Promise<
 
   return false
 }
+
+export async function restorePurchases(): Promise<boolean> {
+  try {
+    const restored = await Purchases.restorePurchases()
+    if (anyActiveEntitlement(restored.customerInfo)) return true
+  } catch {}
+
+  try {
+    const info = await Purchases.getCustomerInfo()
+    if (anyActiveEntitlement(info.customerInfo)) return true
+  } catch {}
+
+  return false
+}
