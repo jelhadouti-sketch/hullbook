@@ -12,6 +12,7 @@ import { MobileNav } from '@/components/marketing/MobileNav';
 import { LandingJsonLd } from '@/components/seo/JsonLd';
 import { LanguageSwitcher } from '@/components/marketing/LanguageSwitcher';
 import { LogoMark } from '@/components/marketing/LogoMark';
+import { StoreBadges } from '@/components/marketing/StoreBadges';
 import { notFound } from 'next/navigation';
 
 export default async function HomePage({
@@ -102,6 +103,11 @@ export default async function HomePage({
       </a>
               </div>
               <p className="text-sm text-ink/50">{dict.hero.note}</p>
+              {/* Store badges */}
+              <div className="mt-8">
+                <p className="text-xs uppercase tracking-[0.15em] text-ink/50 mb-3">Now available on iPhone &amp; iPad</p>
+                <StoreBadges />
+              </div>
             </div>
             <div className="md:col-span-5">
               <DashboardMockup dict={dict} />
@@ -315,6 +321,10 @@ export default async function HomePage({
         {dict.hero.ctaButton} &rarr;
       </a>
             <p className="text-center text-sm text-paper-cream/50 mt-4">{dict.final.note}</p>
+          </div>
+          {/* Store badges */}
+          <div className="mt-10 flex justify-center">
+            <StoreBadges onDark />
           </div>
         </div>
       </section>
