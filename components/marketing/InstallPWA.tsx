@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 
 function PlayIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M3.6 1.3c-.3.2-.5.6-.5 1.1v19.2c0 .5.2.9.5 1.1l.1.1L14.5 12 3.7 1.2l-.1.1zm12 9.4 3.6-2.1c1-.6 1-1.5 0-2.1l-3.6-2.1L12.1 9.6l3.5 1.1zM3.7 22.8c.3.2.7.2 1.2-.1l8.7-5-2.6-2.6-7.3 7.7z"/>
+    <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3.6 1.3c-.3.2-.5.6-.5 1.1v19.2c0 .5.2.9.5 1.1l.1.1L14.5 12 3.7 1.2l-.1.1z" fill="#00d3ff"/>
+      <path d="M18.7 8.6 14.5 12l4.2 4.2 3.6-2.1c1-.6 1-1.5 0-2.1l-3.6-1.4z" fill="#ffce00"/>
+      <path d="M3.7 22.8c.3.2.7.2 1.2-.1l13.8-7.9L14.5 12 3.7 22.8z" fill="#ff3a44"/>
+      <path d="M3.7 1.2 14.5 12l4.2-3.4L4.9 1.1c-.5-.3-.9-.3-1.2-.1z" fill="#00f076"/>
     </svg>
   );
 }
