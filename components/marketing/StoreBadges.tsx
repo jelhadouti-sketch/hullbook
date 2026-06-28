@@ -1,3 +1,5 @@
+import { InstallPWA } from '@/components/marketing/InstallPWA';
+
 const APP_STORE_URL = 'https://apps.apple.com/app/hullbook/id6776191454';
 
 function AppleIcon({ className }: { className?: string }) {
@@ -8,21 +10,10 @@ function AppleIcon({ className }: { className?: string }) {
   );
 }
 
-function PlayIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M3.6 1.3c-.3.2-.5.6-.5 1.1v19.2c0 .5.2.9.5 1.1l.1.1L14.5 12 3.7 1.2l-.1.1zm12 9.4 3.6-2.1c1-.6 1-1.5 0-2.1l-3.6-2.1L12.1 9.6l3.5 1.1zM3.7 22.8c.3.2.7.2 1.2-.1l8.7-5-2.6-2.6-7.3 7.7z"/>
-    </svg>
-  );
-}
-
 export function StoreBadges({ onDark = false }: { onDark?: boolean }) {
   const liveCls = onDark
     ? 'bg-paper-cream text-ink hover:bg-white'
     : 'bg-ink text-paper-cream hover:bg-ink-deep';
-  const soonCls = onDark
-    ? 'bg-white/10 text-paper-cream border border-paper-cream/25'
-    : 'bg-ink/40 text-paper-cream';
 
   return (
     <div className="flex flex-wrap items-center gap-3">
@@ -40,16 +31,7 @@ export function StoreBadges({ onDark = false }: { onDark?: boolean }) {
         </span>
       </a>
 
-      <div
-        aria-label="HullBook is coming soon to Google Play"
-        className={`inline-flex items-center gap-3 rounded-xl px-5 py-3 shadow-sm cursor-default ${soonCls}`}
-      >
-        <PlayIcon className="w-6 h-6" />
-        <span className="flex flex-col leading-none text-left">
-          <span className="text-[10px] tracking-wide opacity-80">Coming soon to</span>
-          <span className="text-lg font-semibold -mt-0.5">Google Play</span>
-        </span>
-      </div>
+      <InstallPWA onDark={onDark} />
     </div>
   );
 }
