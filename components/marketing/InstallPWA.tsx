@@ -61,13 +61,13 @@ export function InstallPWA({ onDark = false }: { onDark?: boolean }) {
     <div className="relative">
       <button
         onClick={handleClick}
-        aria-label="Install HullBook on Android"
+        aria-label="Get HullBook on Google Play"
         className={`inline-flex items-center gap-3 rounded-xl px-5 py-3 shadow-sm transition ${cls}`}
       >
         <PlayIcon className="w-6 h-6" />
         <span className="flex flex-col leading-none text-left">
-          <span className="text-[10px] tracking-wide opacity-80">Install on</span>
-          <span className="text-lg font-semibold -mt-0.5">Android</span>
+          <span className="text-[10px] tracking-wide opacity-80">GET IT ON</span>
+          <span className="text-lg font-semibold -mt-0.5">Google Play</span>
         </span>
       </button>
       {showHelp && (
